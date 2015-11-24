@@ -68,12 +68,15 @@ namespace HotmenuApp.Areas.Admin.Controllers
 
             _db.Orders.Add(order);
             _db.OrderItems.AddRange(order.Items);
-
-            _db.SaveChanges();
-
-            _orderHub.Clients.All.UpdateOrderProcessStatus(order);
-
-            return RedirectToAction("Index", "Home");
+            try {
+                _db.SaveChanges();
+                _orderHub.Clients.All.UpdateOrderProcessStatus(order);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // PUT api/values/5

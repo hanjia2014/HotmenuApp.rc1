@@ -18,6 +18,7 @@ namespace HotmenuApp.Models
         //[JsonConverter(typeof(SingleValueArrayConverter<OrderItem>))]
         public List<OrderItem> Items { get; set; }
         //public List<string> ClientNames { get; set; }
+        [NotMapped]
         public decimal Total
         {
             get
