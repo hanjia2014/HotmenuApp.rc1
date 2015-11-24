@@ -1098,25 +1098,6 @@
           "lib/dnx451/Microsoft.AspNet.SignalR.Server.dll": {}
         }
       },
-      "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core",
-          "System.Data"
-        ],
-        "compile": {
-          "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        }
-      },
       "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -3053,20 +3034,6 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.SignalR.Server.dll": {}
-        }
-      },
-      "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final",
-          "System.Data.Common": "4.0.1-beta-23516",
-          "System.Data.SqlClient": "4.0.0-beta-23516"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll": {}
         }
       },
       "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
@@ -5992,25 +5959,6 @@
           "lib/dnx451/Microsoft.AspNet.SignalR.Server.dll": {}
         }
       },
-      "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core",
-          "System.Data"
-        ],
-        "compile": {
-          "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        }
-      },
       "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -8111,25 +8059,6 @@
           "lib/dnx451/Microsoft.AspNet.SignalR.Server.dll": {}
         }
       },
-      "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final"
-        },
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core",
-          "System.Data"
-        ],
-        "compile": {
-          "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        }
-      },
       "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -10069,20 +9998,6 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.SignalR.Server.dll": {}
-        }
-      },
-      "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final",
-          "System.Data.Common": "4.0.1-beta-23516",
-          "System.Data.SqlClient": "4.0.0-beta-23516"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll": {}
         }
       },
       "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
@@ -13353,20 +13268,6 @@
           "lib/dnxcore50/Microsoft.AspNet.SignalR.Server.dll": {}
         }
       },
-      "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final",
-          "System.Data.Common": "4.0.1-beta-23516",
-          "System.Data.SqlClient": "4.0.0-beta-23516"
-        },
-        "compile": {
-          "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll": {}
-        }
-      },
       "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -16475,20 +16376,6 @@
         "Microsoft.AspNet.SignalR.Server.3.0.0-rc1-final.nupkg",
         "Microsoft.AspNet.SignalR.Server.3.0.0-rc1-final.nupkg.sha512",
         "Microsoft.AspNet.SignalR.Server.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.SignalR.SqlServer/3.0.0-rc1-final": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "NH53gd1YS/kJWgGxQGciSkQ+PUTiY+0nksa8rc34A9Ir93bCXFvodVHMQ66H/WcoGLBsWNDhsNYyUJf3PCS+wg==",
-      "files": [
-        "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.dll",
-        "lib/dnx451/Microsoft.AspNet.SignalR.SqlServer.xml",
-        "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.dll",
-        "lib/dnxcore50/Microsoft.AspNet.SignalR.SqlServer.xml",
-        "Microsoft.AspNet.SignalR.SqlServer.3.0.0-rc1-final.nupkg",
-        "Microsoft.AspNet.SignalR.SqlServer.3.0.0-rc1-final.nupkg.sha512",
-        "Microsoft.AspNet.SignalR.SqlServer.nuspec"
       ]
     },
     "Microsoft.AspNet.StaticFiles/1.0.0-rc1-final": {
@@ -21594,7 +21481,7 @@
       "Microsoft.AspNet.Mvc >= 6.0.0-rc1-final",
       "Microsoft.AspNet.Mvc.TagHelpers >= 6.0.0-rc1-final",
       "Microsoft.AspNet.Server.Kestrel >= 1.0.0-rc1-final",
-      "Microsoft.AspNet.SignalR.SqlServer >= 3.0.0-rc1-final",
+      "Microsoft.AspNet.SignalR.Server >= 3.0.0-rc1-final",
       "Microsoft.AspNet.StaticFiles >= 1.0.0-rc1-final",
       "Microsoft.AspNet.Tooling.Razor >= 1.0.0-rc1-final",
       "Microsoft.Extensions.CodeGenerators.Mvc >= 1.0.0-rc1-final",

@@ -3,9 +3,9 @@ using System.Linq;
 using HotmenuApp.Models;
 using Microsoft.AspNet.Mvc;
 using System;
+using HotmenuApp.Hub;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.AspNet.SignalR;
-using HotmenuApp.Hub;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

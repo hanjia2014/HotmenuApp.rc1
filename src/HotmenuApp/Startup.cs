@@ -46,7 +46,7 @@ namespace HotmenuApp
 
             services.AddMvc();
 
-            // Register application services.
+            services.AddSignalR(options => { options.Hubs.EnableDetailedErrors = true; });
             services.AddDataProtection();
 
             services.Configure<CookieAuthenticationOptions>(options =>
