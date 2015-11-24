@@ -1,0 +1,98 @@
+﻿@using HotmenuApp.Models
+@using System.Globalization
+@model ICollection<Order>
+@{
+    ViewBag.Title = "Orders";
+}
+<div class="main" data-ng-controller="HotmenuApp.Controllers.OrderManagementController as OrderManagementController">
+    <div class="main-inner">
+        <div class="container">
+
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="icon-signal"></i>
+                    <h3> Orders List</h3>
+                    <input id="datepicker" type="text" data-ng-datepicker data-ng-options="DatepickerOptions" data-ng-model="OrderListViewStartDate">
+                    <input id="datepicker" type="text" data-ng-datepicker data-ng-options="DatepickerOptions" data-ng-model="OrderListViewEndDate">
+                    <input class="btn btn-default" data-ng-click="OrderManagementController.ViewOrderList()" value="View" />
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th> Time </th>
+                                <th> Table No. </th>
+                                <th> Status </th>
+                                <th class="td-actions"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr data-ng-repeat="order in Orders | orderBy:'-Time' | dateFilter:OrderListViewStartDate:OrderListViewEndDate">
+                                <td> {{order.Time | date:'yyyy-MM-dd HH:mm:ss'}} </td>
+                                <td> {{order.TableNo}} </td>
+                                <td>
+                                    <select data-ng-model="order.Status" data-ng-change="OrderManagementController.StatusChanged(order)" data-ng-options="status.Value as status.Text for status in StatusOptions"></select>
+                                    <a class="btn btn-warning">Change</a>
+                                </td>
+                                <td class="td-actions">
+                                    <a href="javascript:" class="btn btn-primary btn-small" data-toggle="modal" data-target="#orderDetailsDialog" data-ng-click="OrderManagementController.SetSelectedOrder(order.Id)">View</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /widget-content -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="orderDetailsDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Order Details</h4>
+                </div>
+                <div class="modal-body" id="detailsTable">
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <div class="input-append" data-ng-if="SelectedOrder != null">
+                                <div class="widget-content">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th> Time </th>
+                                                <th> Table No. </th>
+                                                <th> ClientName </th>
+                                                <th> Item </th>
+                                                <th> Price </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr data-ng-repeat="item in SelectedOrder.Items | orderBy:'Name'">
+                                                <td> {{SelectedOrder.Time | date:'yyyy-MM-dd HH:mm:ss'}} </td>
+                                                <td> {{SelectedOrder.TableNo}} </td>
+                                                <td> {{item.ClientName}} </td>
+                                                <td> {{item.MenuItemName}} </td>
+                                                <td> {{item.Price | currency}} </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>	<!-- /controls -->
+                    </div> <!-- /control-group -->
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-warning pull-left" href="javascript:" data-ng-print print-element-id="detailsTable"><i class="fa fa-print"></i>Print</a>
+                    <a class="btn btn-default" data-ng-click="menuController.addToOrderWithClientName(NewClientName)" href="/home/order" data-dismiss="modal">Ok</a><a class="btn btn-default pull-right" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

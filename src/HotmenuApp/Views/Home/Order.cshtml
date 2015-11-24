@@ -1,0 +1,187 @@
+﻿@{
+    ViewBag.Title = "Order";
+}
+
+<div class="main" data-ng-controller="HotmenuApp.Controllers.OrderController as orderController">
+    <div class="main-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="widget widget-plain">
+                        <div class="widget-content">
+                            <a href="javascript:;" class="btn btn-large btn-success btn-support-ask" data-ng-if="!orderController.showOrderDiv" data-ng-click="orderController.createOrder()">Create Order</a>
+                            <a href="javascript:;" class="btn btn-large btn-primary btn-support-ask" data-ng-if="orderController.showOrderDiv" data-ng-click="orderController.Submit()">Submit Order</a>
+                            <a href="javascript:;" class="btn btn-large btn-danger btn-support-ask pull-right" data-ng-if="orderController.showOrderDiv" data-toggle="modal" data-target="#deleteOrderDialog">Delete Order</a>
+                        </div> <!-- /widget-content -->
+                    </div>
+                </div>
+            </div>
+            <div class="row" data-ng-show="orderController.showOrderDiv">
+                <div class="span12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <i style="cursor:pointer" class="icon-plus" data-toggle="modal" data-target="#clientNameDialog"></i>
+                            <h3>Add Customer</h3>
+                            <input type="number" min="1" max="50" step="1" required data-ng-model="TableNo" />
+                        </div> <!-- /widget-header -->
+                        <div class="widget-content fill">
+                            <div class="pricing-plans plans-3">
+                                <div class="plan-container" data-ng-repeat="clientName in CurrentOrder.ClientNames">
+                                    <div data-ng-class="$index % 2 == 0 ? 'plan': 'plan green'">
+                                        <div class="plan-header">
+                                            <div class="plan-title">
+                                                {{clientName}}  <i style="cursor:pointer" class="icon-remove" data-ng-click="orderController.removeClientName($index, clientName, true);"></i>
+                                            </div> <!-- /plan-title -->
+
+                                            <div class="plan-price">
+                                                {{orderController.TotalByClientName(clientName) | currency}} <span class="term">Total Cost</span>
+                                            </div> <!-- /plan-price -->
+
+                                        </div> <!-- /plan-header -->
+
+                                        <div class="plan-features">
+                                            <div class="widget widget-table action-table">
+                                                <div class="widget-content tablecontainer">
+                                                    <table class="table table-condensed table-striped table-responsive">
+                                                        <thead>
+                                                            <tr>
+                                                                <th> Item </th>
+                                                                <th> Price</th>
+                                                                <th class="td-actions"> </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr data-ng-repeat="item in CurrentOrder.Items | filter:{ClientName:clientName}">
+                                                                <td> {{item.MenuItemName}} </td>
+                                                                <td> {{item.Price | currency}} </td>
+                                                                <td class="td-actions"><a href="javascript:;" data-ng-click="orderController.deleteMenuItem(item)" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /widget-content -->
+                                            </div>
+                                        </div> <!-- /plan-features -->
+
+                                        <div class="plan-actions">
+                                            <a href="javascript:;" class="btn" data-ng-click="orderController.AddOrderItem($index, clientName)">Add Item</a>
+                                            <a href="javascript:;" class="btn" data-ng-click="orderController.SelectCurrentClientName($index, clientName)" data-toggle="modal" data-target="#menuDialog">pop up</a>
+                                        </div> <!-- /plan-actions -->
+
+                                    </div> <!-- /plan -->
+                                </div> <!-- /plan-container -->
+                            </div> <!-- /pricing-plans -->
+                        </div> <!-- /widget-content -->
+                    </div> <!-- /widget -->
+                </div> <!-- /span12 -->
+            </div> <!-- /row -->
+        </div> <!-- /container -->
+    </div> <!-- /main-inner -->
+
+    <div class="modal fade" role="dialog" id="deleteOrderDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Order</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="widget widget-plain">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-ng-click="orderController.deleteOrder()" data-dismiss="modal">Yes</a><a class="btn btn-default pull-right" data-dismiss="modal">No</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="clientNameDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ClientName</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="widget widget-plain">
+                        <div class="widget-content">
+                            <input type="text" placeholder="Client Name" data-ng-model="NewClientName" autofocus/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-ng-click="orderController.createClientName(NewClientName)" data-dismiss="modal">Ok</a><a class="btn btn-default pull-right" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="menuDialog" style="width:80%; margin-left:-40%" data-ng-controller="HotmenuApp.Controllers.MenuOperateController as menuController">
+        <div class="modal-dialog" style="height:80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Menu</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <div class="widget">
+                                    <div class="widget-header">
+                                        <i class="icon-bookmark"></i>
+                                        <h3>Category</h3>
+                                    </div>
+                                    <!-- /widget-header -->
+                                    <div class="widget-content">
+                                        <div class="shortcuts">
+                                            <a href="javascript:;" class="shortcut" data-ng-repeat="category in Categories | orderBy:'Id'" data-ng-click="menuController.selectedCategory = category">
+                                                <span class="shortcut-label">{{category.Name}}</span>
+                                            </a>
+                                        </div>
+                                        <!-- /shortcuts -->
+                                    </div>
+                                    <!-- /widget-content -->
+                                </div>
+                                <!-- /widget -->
+                                <div class="widget widget-nopad">
+                                    <div class="widget-header">
+                                        <i class="icon-list-alt"></i>
+                                        <h3> Menu</h3>
+                                        <a data-ng-if="CurrentOrder != null" href="/home/order" class="btn btn-primary btn-small" data-ng-click="menuController.addToOrder()" data-dismiss="modal">Add To Order</a>
+                                    </div>
+                                    <!-- /widget-header -->
+                                    <div class="widget-content">
+                                        <ul class="news-items">
+                                            <li style="width:96%" data-ng-repeat="item in MenuItems" data-ng-show="menuController.selectedCategory == null ||menuController.selectedCategory.Id == 0 || item.CategoryId == menuController.selectedCategory.Id">
+                                                <div class="news-item-date">
+                                                    <a href="javascript:;" data-ng-class="item.Selected ? 'btn btn-success btn-small' : 'btn btn-danger btn-small'" data-ng-click="item.Selected = !item.Selected;">
+                                                        <i data-ng-class="item.Selected ? 'btn-icon-only icon-ok' : 'btn-icon-only icon-remove'"> </i>
+                                                    </a>
+                                                </div>
+                                                <div class="news-item-detail">
+                                                    <a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title" target="_blank">{{item.Name}}</a>
+                                                    <p class="news-item-preview"> {{item.Description}} </p>
+                                                </div>
+                                                <div class="news-item-date">
+                                                    <span class="shortcut-label">{{item.Price | currency}}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- /widget-content -->
+                                </div>
+                                <!-- /widget -->
+                            </div>
+                            <!-- /span6 -->
+                        </div>
+                        <!-- /row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /main -->
