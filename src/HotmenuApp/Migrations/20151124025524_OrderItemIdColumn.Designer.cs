@@ -8,9 +8,10 @@ using HotmenuApp.Models;
 namespace HotmenuApp.Migrations
 {
     [DbContext(typeof(HotmenuDbContext))]
-    partial class HotmenuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20151124025524_OrderItemIdColumn")]
+    partial class OrderItemIdColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")

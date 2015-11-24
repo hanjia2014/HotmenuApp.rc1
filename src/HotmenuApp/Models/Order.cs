@@ -73,8 +73,7 @@ namespace HotmenuApp.Models
     {
         public Guid OrderId { get; set; }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int MenuItemId { get; set; }
         public string MenuItemName { get; set; }
         public string ClientName { get; set; }
