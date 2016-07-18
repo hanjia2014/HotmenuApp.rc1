@@ -28,5 +28,8 @@ npm
 -- run "tsc -sourcemap xxx.ts"
 
 install npm behind a proxy (datacom)
+
+npm config set proxy "http://username:password@servername:port/"
+
 npm config set proxy "http://hanj:Welcome11@DNZWGPX2.datacom.co.nz:80/"
 npm config set https-proxy "http://hanj:Welcome11@DNZWGPX2.datacom.co.nz:80/"
